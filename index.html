@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ガチャ</title>
+    <style>
+        body {
+            font-family: 'メイリオ', 'Meiryo', sans-serif;
+            text-align: center;
+            margin: 0; 
+            padding: 0;
+            margin-top: 50px;
+            background-image: url('gacha1.png');
+            background-size: cover;
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            height: 100vh;
+        }
+        .hidden {
+            display: none;
+        }
+        table {
+            margin: 0 auto;
+            border-collapse: collapse;
+        }
+        td {
+            padding: 3px;
+        }
+        #map {
+            height: 400px;
+            width: 100%;
+            margin-top: 20px;
+        }
+    </style>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+</head>
+<body>
+    <div id="gacha-screen">
+        <h1>ガチャ</h1>
+        <button onclick="drawGacha()">ガチャを回す</button>
+        <div id="prefecture-checkboxes">
+            <table id="prefecture-table">
+                <!-- ここにチェックボックスが追加されます -->
+            </table>
+        </div>
+    </div>
+    
+    <div id="result-screen" class="hidden">
+        <h2><div id="result1"></div></h2>
+        <div id="result2"></div>
+        <h1><div id="result3"></div></h1>
+        <div id="result4"></div>
+        <div id="map"></div>
+        <button onclick="backToGacha()">戻る</button>
+    </div>
+
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script src="gacha.js"></script>
+</body>
+</html>
