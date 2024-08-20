@@ -8,7 +8,7 @@
         body {
             font-family: 'メイリオ', 'Meiryo', sans-serif;
             text-align: center;
-            margin: 0; 
+            margin: 0;
             padding: 0;
             margin-top: 50px;
             background-image: url('gacha1.png');
@@ -17,29 +17,38 @@
             background-repeat: no-repeat;
             background-attachment: fixed;
             height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
         }
         .hidden {
             display: none;
-        }
-        table {
-            margin: 0 auto;
-            border-collapse: collapse;
-        }
-        td {
-            padding: 3px;
         }
         #map {
             height: 400px;
             width: 100%;
             margin-top: 20px;
         }
+        #prefecture-checkboxes table {
+            border: none; /* テーブルの線を消す */
+            margin: 0 auto; /* テーブルをセンタリング */
+        }
+        #prefecture-checkboxes td {
+            border: none; /* セルの線を消す */
+            padding: 2px; /* セルの間隔を詰める */
+        }
+        #result-screen {
+            padding-top: 20px; /* 結果ページの上部に空白を追加 */
+        }
     </style>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
 </head>
 <body>
-    <div id="gacha-screen">
-        <h1>ガチャ</h1>
-        <button onclick="drawGacha()">ガチャを回す</button>
+    <div id="gacha-screen" class="container text-center">
+        <h1 class="my-4">ガチャ</h1>
+        <button class="btn btn-primary btn-lg mb-4" onclick="drawGacha()">まわす</button>
         <div id="prefecture-checkboxes">
             <table id="prefecture-table">
                 <!-- ここにチェックボックスが追加されます -->
@@ -47,15 +56,16 @@
         </div>
     </div>
     
-    <div id="result-screen" class="hidden">
-        <h2><div id="result1"></div></h2>
+    <div id="result-screen" class="container text-center hidden">
+        <h2 class="my-4"><div id="result1"></div></h2>
         <div id="result2"></div>
-        <h1><div id="result3"></div></h1>
+        <h1 class="my-4"><div id="result3"></div></h1>
         <div id="result4"></div>
-        <div id="map"></div>
-        <button onclick="backToGacha()">戻る</button>
+        <div id="map" class="my-4"></div>
+        <button class="btn btn-secondary btn-lg" onclick="backToGacha()">戻る</button>
     </div>
 
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
     <script src="gacha.js"></script>
 </body>
