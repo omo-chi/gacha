@@ -1,4 +1,5 @@
 let items = [];
+let map;
 const prefectures = ["兵庫県", "福井県", "島根県", "鳥取県", "山口県", "広島県", "大阪府", "岡山県", "京都府", "和歌山県", "滋賀県", "富山県", "三重県", "奈良県", "新潟県", "石川県", "長野県", "福岡県"];
 
 // ページロード時に固定ファイルを読み込む
@@ -70,14 +71,23 @@ function drawGacha() {
 function backToGacha() {
     document.getElementById('gacha-screen').classList.remove('hidden');
     document.getElementById('result-screen').classList.add('hidden');
+
+    // 地図インスタンスが存在する場合、地図を削除する
+    if (map) {
+        map.remove();
+        map = null;
+    }
 }
 
+
 function initMap(lat, lon) {
-    const map = L.map('map').setView([lat, lon], 13);
+    if (map) {
+        map.remove(); // 既存の地図インスタンスを削除
+    }
+    map = L.map('map').setView([lat, lon], 13);
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         maxZoom: 7,
     }).addTo(map);
     L.marker([lat, lon]).addTo(map)
-        //.bindPopup('ここです')
         .openPopup();
 }
